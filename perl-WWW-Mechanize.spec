@@ -1,8 +1,8 @@
-
+#
 # Conditional build:
-# tests require internet connection
 %bcond_with	tests	# perform "make test"
-
+			# tests require internet connection
+#
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	WWW
 %define	pnam	Mechanize
