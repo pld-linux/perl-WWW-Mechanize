@@ -9,18 +9,18 @@
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	0.63
+Version:	0.64
 Release:	1
 License:	Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	40d195a9070c97c9e279b98c30c857db
+# Source0-md5:	55def1ad09bad16dda5074548dab1685
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	perl-devel >= 5.6.1
 %if %{with tests}
-BuildRequires:	perl-libwww >= 5.69
+BuildRequires:	perl-libwww >= 5.74
 BuildRequires:	perl-URI
-BuildRequires:	perl(HTML::TokeParser) >= 2.20
+BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl(Test::More) >= 0.34
 %endif
 BuildArch:	noarch
@@ -58,7 +58,8 @@ echo "y" | %{__perl} Makefile.PL \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
