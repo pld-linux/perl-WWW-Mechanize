@@ -4,8 +4,8 @@
 			# tests require internet connection
 #
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	WWW
-%define	pnam	Mechanize
+%define		pdir	WWW
+%define		pnam	Mechanize
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
