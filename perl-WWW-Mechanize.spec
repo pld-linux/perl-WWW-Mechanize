@@ -24,6 +24,7 @@ BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl(Test::More) >= 0.34
 BuildRequires:	perl-Test-Pod >= 1.00
 %endif
+Requires:	perl-libwww >= 5.76
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
