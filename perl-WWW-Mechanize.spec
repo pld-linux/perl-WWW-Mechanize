@@ -1,21 +1,28 @@
-#
+
 # Conditional build:
-# _with_tests - perform "make test"
-#
+# tests require internet connection
+%bcond_with	tests	# perform "make test"
+
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	WWW
 %define	pnam	Mechanize
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	0.60
+Version:	0.61
 Release:	1
 License:	Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	26736aa802cede1c005a284a0bcef8ae
+# Source0-md5:	73a04aeb03261c0c56a292245d701396
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	perl-devel >= 5.6.1
+%if %{with tests}
+BuildRequires:	perl-libwww >= 5.69
+BuildRequires:	perl-URI
+BuildRequires:	perl(HTML::TokeParser) >= 2.20
+BuildRequires:	perl(Test::More) >= 0.34
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,7 +53,7 @@ echo "y" | %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
 %{__make}
 
-%{?_with_tests:%{__make} test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
