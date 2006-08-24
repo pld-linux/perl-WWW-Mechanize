@@ -1,7 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests	# perform "make test"
-			# tests require Internet connection
+%bcond_without	tests	# do not perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	WWW
@@ -9,13 +8,13 @@
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	1.18
+Version:	1.20
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	d537bfefc84806227fd280a792f6527d
+# Source0-md5:	97318ae4928c50c56faf097cbe187428
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	perl-devel >= 1:5.8.0
 %if %{with tests}
@@ -23,7 +22,10 @@ BuildRequires:	perl-libwww >= 5.76
 BuildRequires:	perl-URI
 BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl(Test::More) >= 0.34
-BuildRequires:	perl-Test-Pod >= 1.00
+BuildRequires:	perl-Sub-Uplevel >= 0.13
+BuildRequires:	perl-Test-Taint
+# not packaged
+# BuildRequires:	perl-Test-Memory-Cycle
 %endif
 Requires:	perl-libwww >= 5.76
 BuildArch:	noarch
