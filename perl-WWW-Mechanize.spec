@@ -9,23 +9,26 @@ Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
 Version:	1.20
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	97318ae4928c50c56faf097cbe187428
-BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl-libwww >= 5.76
-BuildRequires:	perl-URI
-BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl(Test::More) >= 0.34
+BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl-Sub-Uplevel >= 0.13
+BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Memory-Cycle
+BuildRequires:	perl-Test-Pod >= 1.14
+BuildRequires:	perl-Test-Pod-Coverage >= 1.04
 BuildRequires:	perl-Test-Taint
-# not packaged
-# BuildRequires:	perl-Test-Memory-Cycle
+BuildRequires:	perl-Test-Warn
+BuildRequires:	perl-URI
+BuildRequires:	perl-libwww >= 5.76
 %endif
 Requires:	perl-libwww >= 5.76
 BuildArch:	noarch
@@ -54,7 +57,7 @@ o które mo¿na odpytaæ i je ponownie odwiedziæ.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-echo "y" | %{__perl} Makefile.PL \
+echo 'y' | %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
 %{__make}
 
@@ -65,6 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{perl_vendorlib}/WWW/Mechanize/{FAQ,Cookbook,Examples}.pod
 
 %clean
 rm -rf $RPM_BUILD_ROOT
