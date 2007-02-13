@@ -6,7 +6,7 @@
 %define		pdir	WWW
 %define		pnam	Mechanize
 Summary:	WWW::Mechanize - automate interaction with websites
-Summary(pl.UTF-8):   WWW::Mechanize - automatyzacja interakcji ze stronami WWW
+Summary(pl.UTF-8):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
 Version:	1.20
 Release:	2
