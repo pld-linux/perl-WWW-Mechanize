@@ -15,6 +15,7 @@ License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/WWW/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	8ece5ea7690eb6a632a46887f0d2e98e
+Patch0:		%{name}-testserver.patch
 URL:		http://search.cpan.org/dist/WWW-Mechanize/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -27,9 +28,11 @@ BuildRequires:	perl-Test-Memory-Cycle
 BuildRequires:	perl-Test-Pod >= 1.14
 BuildRequires:	perl-Test-Pod-Coverage >= 1.04
 BuildRequires:	perl-Test-Taint
-BuildRequires:	perl-Test-Warn
+BuildRequires:	perl-Test-Warn >= 0.11
 BuildRequires:	perl-URI
 BuildRequires:	perl-libwww >= 5.76
+BuildRequires:	perl-HTTP-Response-Encoding
+BuildRequires:	perl-HTTP-Server-Simple
 %endif
 Requires:	perl-libwww >= 5.76
 BuildArch:	noarch
@@ -56,6 +59,7 @@ o które można odpytać i je ponownie odwiedzić.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch0 -p1
 
 %build
 echo 'y' | %{__perl} Makefile.PL \
