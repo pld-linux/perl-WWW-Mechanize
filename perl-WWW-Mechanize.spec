@@ -8,20 +8,23 @@
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl.UTF-8):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	1.52
+Version:	1.54
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/WWW/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	8ece5ea7690eb6a632a46887f0d2e98e
+# Source0-md5:	27257ee2a33348df181c866d865925fb
 Patch0:		%{name}-testserver.patch
 URL:		http://search.cpan.org/dist/WWW-Mechanize/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl(Test::More) >= 0.34
+BuildRequires:	perl-Encode
 BuildRequires:	perl-HTML-Parser >= 3.33
+BuildRequires:	perl-HTTP-Response-Encoding
+BuildRequires:	perl-HTTP-Server-Simple
 BuildRequires:	perl-Sub-Uplevel >= 0.13
 BuildRequires:	perl-Test-Exception
 BuildRequires:	perl-Test-Memory-Cycle
@@ -31,9 +34,8 @@ BuildRequires:	perl-Test-Taint
 BuildRequires:	perl-Test-Warn >= 0.11
 BuildRequires:	perl-URI
 BuildRequires:	perl-libwww >= 5.76
-BuildRequires:	perl-HTTP-Response-Encoding
-BuildRequires:	perl-HTTP-Server-Simple
 %endif
+Requires:	perl-Encode
 Requires:	perl-libwww >= 5.76
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
