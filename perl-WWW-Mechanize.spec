@@ -9,7 +9,7 @@ Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl.UTF-8):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
 Version:	1.70
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -21,6 +21,7 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl(Test::More) >= 0.34
 BuildRequires:	perl-Encode
+BuildRequires:	perl-HTML-Form
 BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl-HTTP-Response-Encoding
 BuildRequires:	perl-HTTP-Server-Simple
