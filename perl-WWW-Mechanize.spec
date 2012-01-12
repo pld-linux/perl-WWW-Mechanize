@@ -8,13 +8,13 @@
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl.UTF-8):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	1.70
-Release:	2
+Version:	1.71
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/WWW/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	6ade3d06ef7e16b91864cda77b9d89a6
+# Source0-md5:	56f059ecbe674c786779e92a27747746
 URL:		http://search.cpan.org/dist/WWW-Mechanize/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
