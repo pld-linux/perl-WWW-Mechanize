@@ -7,35 +7,42 @@
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl.UTF-8):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	1.95
+Version:	2.08
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/WWW/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	867473e8a189b57e79dfc38fcd8fa51d
+# Source0-md5:	610faadc72ec5fa5ace4d2b59ad8f17c
 URL:		http://search.cpan.org/dist/WWW-Mechanize/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
-BuildRequires:	perl(Test::More) >= 0.34
 BuildRequires:	perl-Encode
-BuildRequires:	perl-HTML-Form
+BuildRequires:	perl-HTML-Form >= 1.00
 BuildRequires:	perl-HTML-Parser >= 3.33
-BuildRequires:	perl-HTTP-Response-Encoding
+BuildRequires:	perl-HTML-Tree >= 5
+BuildRequires:	perl-HTTP-Cookies
+BuildRequires:	perl-HTTP-Daemon >= 6.12
+BuildRequires:	perl-HTTP-Message >= 1.30
 BuildRequires:	perl-HTTP-Server-Simple
+BuildRequires:	perl-Scalar-List-Utils >= 1.14
 BuildRequires:	perl-Sub-Uplevel >= 0.13
+BuildRequires:	perl-Test-Deep
 BuildRequires:	perl-Test-Exception
-BuildRequires:	perl-Test-Memory-Cycle
-BuildRequires:	perl-Test-Pod >= 1.14
-BuildRequires:	perl-Test-Pod-Coverage >= 1.04
-BuildRequires:	perl-Test-Taint
-BuildRequires:	perl-Test-Warn >= 0.11
+BuildRequires:	perl-Test-Fatal
+BuildRequires:	perl-Test-Memory-Cycle >= 1.06
+BuildRequires:	perl-Test-NoWarnings >= 1.04
+BuildRequires:	perl-Test-Output
+BuildRequires:	perl-Test-Simple >= 0.96
+BuildRequires:	perl-Test-Taint >= 1.08
+BuildRequires:	perl-Test-Warn
 BuildRequires:	perl-URI
-BuildRequires:	perl-libwww >= 5.76
+BuildRequires:	perl-libwww >= 6.45
 %endif
 Requires:	perl-Encode
-Requires:	perl-libwww >= 5.76
+Requires:	perl-libwww >= 6.45
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -74,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{perl_vendorlib}/WWW/Mechanize/{FAQ,Cookbook,Examples}.pod
+%{__rm} $RPM_BUILD_ROOT%{perl_vendorlib}/WWW/Mechanize/{FAQ,Cookbook,Examples}.pod
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,8 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes
-%attr(755,root,root) %{_bindir}/*
-%{perl_vendorlib}/%{pdir}/%{pnam}.pm
-%dir %{perl_vendorlib}/%{pdir}/%{pnam}
-%{perl_vendorlib}/%{pdir}/%{pnam}/*.pm
-%{_mandir}/man?/*
+%attr(755,root,root) %{_bindir}/mech-dump
+%{perl_vendorlib}/WWW/Mechanize.pm
+%dir %{perl_vendorlib}/WWW/Mechanize
+%{perl_vendorlib}/WWW/Mechanize/*.pm
+%{_mandir}/man1/mech-dump.1p*
+%{_mandir}/man3/WWW::Mechanize*.3pm*
