@@ -7,43 +7,34 @@
 Summary:	WWW::Mechanize - automate interaction with websites
 Summary(pl.UTF-8):	WWW::Mechanize - automatyzacja interakcji ze stronami WWW
 Name:		perl-WWW-Mechanize
-Version:	2.20
+Version:	2.22
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/WWW/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	6ebaccfe5edafdccc400fd79efb913c4
+Source0:	https://www.cpan.org/authors/id/O/OA/OALDERS/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	38b8f42e2311aa9a40232c1bd18224f8
 URL:		https://metacpan.org/dist/WWW-Mechanize
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
-BuildRequires:	perl-Encode
-BuildRequires:	perl-HTML-Form >= 1.00
+BuildRequires:	perl-HTML-Form >= 6.08
 BuildRequires:	perl-HTML-Parser >= 3.33
 BuildRequires:	perl-HTML-Tree >= 5
 BuildRequires:	perl-HTTP-Cookies
 BuildRequires:	perl-HTTP-Daemon >= 6.12
-BuildRequires:	perl-HTTP-Message >= 1.30
-BuildRequires:	perl-HTTP-Server-Simple
+BuildRequires:	perl-HTTP-Message >= 7.01
 BuildRequires:	perl-Path-Tiny
-BuildRequires:	perl-Scalar-List-Utils >= 1.14
-BuildRequires:	perl-Sub-Uplevel >= 0.13
 BuildRequires:	perl-Test-Deep
-BuildRequires:	perl-Test-Exception
 BuildRequires:	perl-Test-Fatal
 BuildRequires:	perl-Test-Memory-Cycle >= 1.06
-BuildRequires:	perl-Test-NoWarnings >= 1.04
 BuildRequires:	perl-Test-Output
 BuildRequires:	perl-Test-Simple >= 0.96
-BuildRequires:	perl-Test-Taint >= 1.08
-BuildRequires:	perl-Test-Warn
 BuildRequires:	perl-Test-Warnings
 BuildRequires:	perl-URI
 BuildRequires:	perl-libwww >= 6.45
 %endif
-Requires:	perl-Encode
 Requires:	perl-libwww >= 6.45
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
